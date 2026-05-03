@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WebSocket Test</title>
+</head>
+<body>
+    <h1>WebSocket Connection Test</h1>
+    <div id="output"></div>
+    <script>
+        const output = document.getElementById('output');
+        
+        function log(msg) {
+            output.innerHTML += '<br>' + msg;
+            console.log(msg);
+        }
+        
+        log('Testing WebSocket connection to ws://127.0.0.1:6001/...');
+        
+        const ws = new WebSocket('ws://127.0.0.1:6001/app/chitchat-app?protocol=7&client=js&version=7.6.0');
+        
+        ws.onopen = function() {
+            log('SUCCESS: Connected!');
+            ws.close();
+        };
+        
+        ws.onerror = function(error) {
+            log('ERROR: ' + JSON.stringify(error));
+        };
+        
+        ws.onclose = function(e) {
+            log('CLOSED: Code=' + e.code + ', Reason=' + e.reason);
+        };
+    </script>
+</body>
+</html>

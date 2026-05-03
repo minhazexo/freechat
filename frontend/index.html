@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FreeChat</title>
+    <!-- Load Pusher from CDN — the npm-bundled version breaks WebSocket in Vite -->
+    <script src="https://js.pusher.com/7.0.3/pusher.min.js"></script>
+    <script>
+      window.addEventListener('error', function(e) {
+        if (e.target && e.target.src && e.target.src.includes('pusher')) {
+          console.error('[WebSocket] ❌ Failed to load Pusher CDN!');
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
