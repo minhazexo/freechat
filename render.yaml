@@ -7,28 +7,34 @@ services:
     dockerfilePath: ./backend/Dockerfile
     healthCheckPath: /api/ws-test
     envVars:
+      - key: APP_NAME
+        value: Chitchat
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
         value: false
+      - key: APP_URL
+        value: https://freechat-li91.onrender.com
+      - key: APP_FRONTEND_URL
+        sync: false
+      - key: CORS_ALLOWED_ORIGINS
+        sync: false
+      - key: APP_KEY
+        sync: false
+      - key: JWT_SECRET
+        sync: false
       - key: LOG_CHANNEL
         value: stack
+      - key: LOG_LEVEL
+        value: info
       - key: CACHE_DRIVER
         value: file
       - key: SESSION_DRIVER
         value: file
       - key: QUEUE_CONNECTION
         value: sync
-      - key: BROADCAST_DRIVER
-        value: pusher
-      - key: APP_KEY
-        sync: false
-      - key: JWT_SECRET
-        sync: false
-      - key: APP_URL
-        sync: false
-      - key: APP_FRONTEND_URL
-        sync: false
+      - key: FILESYSTEM_DISK
+        value: local
       - key: DB_CONNECTION
         value: mysql
       - key: DB_HOST
@@ -41,6 +47,10 @@ services:
         sync: false
       - key: DB_PASSWORD
         sync: false
+      - key: MYSQL_ATTR_SSL_CA
+        value: ""
+      - key: BROADCAST_DRIVER
+        value: pusher
       - key: PUSHER_APP_ID
         sync: false
       - key: PUSHER_APP_KEY
@@ -55,3 +65,17 @@ services:
         value: 443
       - key: PUSHER_SCHEME
         value: https
+      - key: MODERATION_ENABLED
+        value: true
+      - key: RATE_LIMIT_PER_MINUTE
+        value: 60
+      - key: CHAT_RATE_LIMIT_PER_MINUTE
+        value: 30
+      - key: ENABLE_VIDEO_CHAT
+        value: true
+      - key: ENABLE_SCREEN_SHARE
+        value: true
+      - key: ENABLE_ANONYMOUS_LOGIN
+        value: true
+      - key: ENABLE_REGISTRATION
+        value: true
